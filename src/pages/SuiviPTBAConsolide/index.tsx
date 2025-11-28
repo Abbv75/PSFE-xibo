@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { PAGE_T } from "../../types";
-import Component from "./Component";
 import { usePageLooper } from "../../contexts/PageLooper";
 import {
     Chart as ChartJS,
@@ -13,7 +10,7 @@ import {
 } from "chart.js";
 import { Bar } from 'react-chartjs-2';
 import { Stack, Typography } from "@mui/joy";
-import { blue, green, grey, orange } from "@mui/material/colors";
+import { green, grey } from "@mui/material/colors";
 
 ChartJS.register(
     CategoryScale,
@@ -53,12 +50,10 @@ export default () => {
                     responsive: true,
                     plugins: { legend: { display: true, } },
                     scales: { y: { beginAtZero: true, max: 100 } },
-
                 }}
                 style={{
                     maxHeight: '70vh',
                     background: 'white',
-                    fontSize: "2vw"
                 }}
             />
         </Stack>
