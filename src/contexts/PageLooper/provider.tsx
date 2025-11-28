@@ -6,11 +6,14 @@ import INITIAL_PAGES from '../../constant/initialPages';
 import getAllValidation from '../../service/prixMarche/getAllValidation';
 import { PAGE_T, GET_ALL_VALIDATION_T, SUIVI_INDICATEUR_T } from '../../types';
 import { getAllSuiviIndicateurs } from '../../service/suiviIndicateurs';
+import { getSuiviPTBAConsolide } from '../../service/suiviPTBAConsolide';
+import { SUIVI_PTBA_CONSOLIDE_T } from '../../service/suiviPTBAConsolide/get';
 
 export default () => {
     const [pages, setPages] = useState<PAGE_T[]>(INITIAL_PAGES);
 
-    const [suiviIndicateurData, setsuiviIndicateurData] = useState<SUIVI_INDICATEUR_T[]>([])
+    const [suiviIndicateurData, setsuiviIndicateurData] = useState<SUIVI_INDICATEUR_T[]>([]);
+    const [suiviPTBAConsolide, setsuiviPTBAConsolide] = useState<SUIVI_PTBA_CONSOLIDE_T | undefined>()
 
     const [apiData, setapiData] = useState<GET_ALL_VALIDATION_T[]>([]);
 
@@ -26,6 +29,7 @@ export default () => {
     const loadData = () => {
         getAllValidation().then(data => data && setapiData(data));
         getAllSuiviIndicateurs().then(res => res && setsuiviIndicateurData(res));
+        getSuiviPTBAConsolide().then(res => res && setsuiviPTBAConsolide(res));
     }
 
     useEffect(() => {
@@ -66,7 +70,8 @@ export default () => {
         setIsPlaying,
         nextPage,
         timeLeft,
-        suiviIndicateurData
+        suiviIndicateurData,
+        suiviPTBAConsolide
     }
 
     return (
