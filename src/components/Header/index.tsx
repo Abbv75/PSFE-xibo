@@ -19,14 +19,14 @@ const Header: React.FC = () => {
             <Box
                 component="img"
                 src={IMAGES.logo}
-                alt="Logo SIMRO Cameroun"
+                alt="Logo PSFE Cameroun"
                 sx={{ height: '3vw', width: "auto" }}
             />
 
             {/* Titre du projet */}
             <Stack spacing={0} sx={{ textAlign: "center" }}>
                 <Typography level="h4" fontWeight="lg" fontSize={'1.2vw'}>
-                    SIMRO Cameroun
+                    PSFE Cameroun
                 </Typography>
                 <Typography level="body-md" fontWeight="md" fontSize={'1vw'}>
                     Système d'Information sur les Marchés du Riz et de l'Oignon

@@ -1,6 +1,6 @@
 {
-  "name": "simroXibo",
-  "homepage": "/php_files/simroXibo",
+  "name": "PSFEXibo",
+  "homepage": "/php_files/PSFEXibo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

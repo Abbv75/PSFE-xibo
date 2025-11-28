@@ -22,19 +22,19 @@ const PageAccueil: React.FC = () => {
                 <CardMedia
                     component="img"
                     src={IMAGES.logo} // Remplacer par le chemin réel de ton logo
-                    alt="Logo SIMRO Cameroun"
+                    alt="Logo PSFE Cameroun"
                     sx={{ width: '10vw', height: "auto", objectFit: 'contain' }}
                 />
                 <CardMedia
                     component="img"
                     src={IMAGES.logo_padfa} // Remplacer par le chemin réel de ton logo
-                    alt="Logo SIMRO Cameroun"
+                    alt="Logo PSFE Cameroun"
                     sx={{ width: '10vw', height: "auto", objectFit: 'contain' }}
                 />
             </Stack>
 
             <Typography level="h2" fontSize="3vw" fontWeight="lg">
-                SIMRO Cameroun
+                PSFE Cameroun
             </Typography>
             <Typography level="h4" fontSize="2.5vw" fontWeight="md">
                 Système d'Information sur les Marchés du Riz et de l'Oignon du Cameroun
