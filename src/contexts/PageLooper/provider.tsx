@@ -8,12 +8,15 @@ import { PAGE_T, GET_ALL_VALIDATION_T, SUIVI_INDICATEUR_T } from '../../types';
 import { getAllSuiviIndicateurs } from '../../service/suiviIndicateurs';
 import { getSuiviPTBAConsolide } from '../../service/suiviPTBAConsolide';
 import { SUIVI_PTBA_CONSOLIDE_T } from '../../service/suiviPTBAConsolide/get';
+import { getSuiviPTBAProgramme } from '../../service/suiviPTBAProgramme';
+import { SUIVI_PTBA_PROGRAMME_T } from '../../service/suiviPTBAProgramme/get';
 
 export default () => {
     const [pages, setPages] = useState<PAGE_T[]>(INITIAL_PAGES);
 
     const [suiviIndicateurData, setsuiviIndicateurData] = useState<SUIVI_INDICATEUR_T[]>([]);
-    const [suiviPTBAConsolide, setsuiviPTBAConsolide] = useState<SUIVI_PTBA_CONSOLIDE_T | undefined>()
+    const [suiviPTBAConsolide, setsuiviPTBAConsolide] = useState<SUIVI_PTBA_CONSOLIDE_T | undefined>();
+    const [suiviPTBAProgramme, setsuiviPTBAProgramme] = useState<SUIVI_PTBA_PROGRAMME_T | undefined>();
 
     const [apiData, setapiData] = useState<GET_ALL_VALIDATION_T[]>([]);
 
@@ -30,6 +33,7 @@ export default () => {
         getAllValidation().then(data => data && setapiData(data));
         getAllSuiviIndicateurs().then(res => res && setsuiviIndicateurData(res));
         getSuiviPTBAConsolide().then(res => res && setsuiviPTBAConsolide(res));
+        getSuiviPTBAProgramme().then(res => res && setsuiviPTBAProgramme(res));
     }
 
     useEffect(() => {
@@ -71,7 +75,8 @@ export default () => {
         nextPage,
         timeLeft,
         suiviIndicateurData,
-        suiviPTBAConsolide
+        suiviPTBAConsolide,
+        suiviPTBAProgramme
     }
 
     return (
