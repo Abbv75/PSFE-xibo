@@ -1,3 +1,4 @@
+import { REALISATION_CUMULE_T } from "../../service/realisationCumule/get";
 import { SUIVI_PTBA_CONSOLIDE_T } from "../../service/suiviPTBAConsolide/get";
 import { SUIVI_PTBA_PROGRAMME_T } from "../../service/suiviPTBAProgramme/get";
 import { GET_ALL_VALIDATION_T, PAGE_T, SUIVI_INDICATEUR_T, USE_STATE_T } from "../../types";
@@ -15,5 +16,6 @@ export default interface contextType {
     timeLeft: number,
     suiviIndicateurData: SUIVI_INDICATEUR_T[],
     suiviPTBAConsolide?: SUIVI_PTBA_CONSOLIDE_T,
-    suiviPTBAProgramme?: SUIVI_PTBA_PROGRAMME_T
+    suiviPTBAProgramme?: SUIVI_PTBA_PROGRAMME_T,
+    realisationCumuleData?: REALISATION_CUMULE_T,
 }

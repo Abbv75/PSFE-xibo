@@ -1,0 +1,1 @@
+export {default as getRealisationCumule} from "./get"

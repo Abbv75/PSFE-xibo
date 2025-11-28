@@ -10,6 +10,8 @@ import { getSuiviPTBAConsolide } from '../../service/suiviPTBAConsolide';
 import { SUIVI_PTBA_CONSOLIDE_T } from '../../service/suiviPTBAConsolide/get';
 import { getSuiviPTBAProgramme } from '../../service/suiviPTBAProgramme';
 import { SUIVI_PTBA_PROGRAMME_T } from '../../service/suiviPTBAProgramme/get';
+import { getRealisationCumule } from '../../service/realisationCumule';
+import { REALISATION_CUMULE_T } from '../../service/realisationCumule/get';
 
 export default () => {
     const [pages, setPages] = useState<PAGE_T[]>(INITIAL_PAGES);
@@ -17,6 +19,7 @@ export default () => {
     const [suiviIndicateurData, setsuiviIndicateurData] = useState<SUIVI_INDICATEUR_T[]>([]);
     const [suiviPTBAConsolide, setsuiviPTBAConsolide] = useState<SUIVI_PTBA_CONSOLIDE_T | undefined>();
     const [suiviPTBAProgramme, setsuiviPTBAProgramme] = useState<SUIVI_PTBA_PROGRAMME_T | undefined>();
+    const [realisationCumuleData, setrealisationCumuleData] = useState<REALISATION_CUMULE_T | undefined>();
 
     const [apiData, setapiData] = useState<GET_ALL_VALIDATION_T[]>([]);
 
@@ -34,6 +37,7 @@ export default () => {
         getAllSuiviIndicateurs().then(res => res && setsuiviIndicateurData(res));
         getSuiviPTBAConsolide().then(res => res && setsuiviPTBAConsolide(res));
         getSuiviPTBAProgramme().then(res => res && setsuiviPTBAProgramme(res));
+        getRealisationCumule().then(res => res && setrealisationCumuleData(res));
     }
 
     useEffect(() => {
@@ -76,7 +80,8 @@ export default () => {
         timeLeft,
         suiviIndicateurData,
         suiviPTBAConsolide,
-        suiviPTBAProgramme
+        suiviPTBAProgramme,
+        realisationCumuleData
     }
 
     return (

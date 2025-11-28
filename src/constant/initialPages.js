@@ -1,6 +1,7 @@
 import PageAccueil from "../pages/PageAccueil";
 import PrixCategorieParRegion from "../pages/PrixCategorieParRegion";
 import PrixMoyenProduitParRegion from "../pages/PrixMoyenProduitParRegion";
+import RealisationCumule from "../pages/RealisationCumule";
 import SuiviDesIndicateurs from "../pages/SuiviDesIndicateurs";
 import SuiviPTBAConsolide from "../pages/SuiviPTBAConsolide";
 import SuiviPTBAProgramme from "../pages/SuiviPTBAProgramme";
@@ -20,6 +21,11 @@ export default [
         id: "SuiviPTBAProgramme",
         component: <SuiviPTBAProgramme />,
         duration: 1000,
+    },
+    {
+        id: "RealisationCumule",
+        component: <RealisationCumule />,
+        duration: 100000,
     },
     {
         id: "SuivitPTBAConsolide",
