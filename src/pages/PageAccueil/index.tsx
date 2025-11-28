@@ -18,26 +18,21 @@ const PageAccueil: React.FC = () => {
         >
             <ChargeurDePage />
 
-            <Stack direction="row" gap={'7vw'} justifyContent="center" alignContent={'center'} flexWrap="wrap">
-                <CardMedia
-                    component="img"
-                    src={IMAGES.logo} // Remplacer par le chemin réel de ton logo
-                    alt="Logo PSFE Cameroun"
-                    sx={{ width: '10vw', height: "auto", objectFit: 'contain' }}
-                />
-                <CardMedia
-                    component="img"
-                    src={IMAGES.logo_padfa} // Remplacer par le chemin réel de ton logo
-                    alt="Logo PSFE Cameroun"
-                    sx={{ width: '10vw', height: "auto", objectFit: 'contain' }}
-                />
+            <Stack direction="row" gap={'1vw'} justifyContent="center" alignContent={'center'} flexWrap="wrap">
+                {[IMAGES.logo, IMAGES.minister1, IMAGES.minister2].map(value => (
+                    <CardMedia
+                        component="img"
+                        src={value}
+                        sx={{ width: '10vw', height: "auto", objectFit: 'contain' }}
+                    />
+                ))}
             </Stack>
 
             <Typography level="h2" fontSize="3vw" fontWeight="lg">
                 PSFE Cameroun
             </Typography>
             <Typography level="h4" fontSize="2.5vw" fontWeight="md">
-                Système d'Information sur les Marchés du Riz et de l'Oignon du Cameroun
+                Programme sectoriel forêts et environnement du Cameroun
             </Typography>
 
             {/* Liste des partenaires */}

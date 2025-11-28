@@ -29,7 +29,7 @@ const Header: React.FC = () => {
                     PSFE Cameroun
                 </Typography>
                 <Typography level="body-md" fontWeight="md" fontSize={'1vw'}>
-                    Système d'Information sur les Marchés du Riz et de l'Oignon
+                    Programme sectoriel forêts et environnement du Cameroun
                 </Typography>
             </Stack>
 

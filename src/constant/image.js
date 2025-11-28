@@ -1,6 +1,11 @@
+import logo from "../assets/images/logo.png"
+import minister1 from "../assets/images/minister1.png"
+import minister2 from "../assets/images/minister2.png"
 
 export default {
-    logo: 'logo.png',
+    logo,
+    minister1,
+    minister2,
     partenaire1: 'premier_page_img/1.webp',
     partenaire2: 'premier_page_img/2.webp',
     partenaire3: 'premier_page_img/3.webp',
