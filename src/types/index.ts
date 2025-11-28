@@ -1,4 +1,6 @@
-export type USE_STATE_T<T = any> = React.Dispatch<React.SetStateAction<T>>
+import { Dispatch, SetStateAction } from "react";
+
+export type USE_STATE_T<T = any> = Dispatch<SetStateAction<T>>
 
 export type LOADING_STATE_T = "En cours de chargement."
   | "Chargement finit."
@@ -81,4 +83,21 @@ export interface PRODUIT_T {
   statut: boolean;
   categorie_produit: CATEGORIE_PRODUIT_T;
   forme_produit: FORME_PRODUIT_T;
+}
+
+
+
+export interface SUIVI_INDICATEUR_DONNEE_ANNEE_T {
+  annee: number;
+  cible: number;
+  realisation: number;
+}
+
+export interface SUIVI_INDICATEUR_T {
+  id_ref_ind: number;
+  code_ref_ind: string;
+  intitule: string;
+  referentiel: number;
+  projet: string;
+  donnees_annees: SUIVI_INDICATEUR_DONNEE_ANNEE_T[];
 }

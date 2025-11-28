@@ -1,0 +1,1 @@
+export {default as getAllSuiviIndicateurs} from "./getAll"

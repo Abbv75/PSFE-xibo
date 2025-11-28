@@ -1,51 +1,22 @@
-import { useEffect, useState, useRef } from "react";
 import { Box, LinearProgress, Sheet, Stack, Typography } from "@mui/joy";
-import { GET_ALL_VALIDATION_T, PAGE_T } from "../../types";
 import PageLooperContext from "../../providers/PageLooperContext";
-import { INITIAL_PAGES } from "../../constant";
-import getAllValidation from "../../service/prixMarche/getAllValidation";
 import Header from "../Header";
 import ActionZone from "./ActionZone";
+import { usePageLooper } from "../../contexts/PageLooper";
 
 const PageLooper = () => {
-    const [pages, setPages] = useState<PAGE_T[]>(INITIAL_PAGES);
-
-    const [apiData, setapiData] = useState<GET_ALL_VALIDATION_T[]>([]);
-
-    const [cacheMoyennes] = useState<{ [produit: string]: any }>({});
-
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isPlaying, setIsPlaying] = useState(true);
-    const [timeLeft, setTimeLeft] = useState(pages[0].duration / 1000);
-    const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-    const nextPage = () => setCurrentIndex((prev) => (prev + 1) % pages.length);
-
-    useEffect(() => {
-        if (!isPlaying || !pages[currentIndex]) return;
-
-        const duration = pages[currentIndex].duration;
-        setTimeLeft(duration / 1000);
-
-        timerRef.current = setInterval(() => {
-            setTimeLeft((prev) => {
-                if (prev <= 1) {
-                    nextPage();
-                    return duration / 1000;
-                }
-                return prev - 1;
-            });
-        }, 1000);
-
-        return () => {
-            if (timerRef.current) clearInterval(timerRef.current);
-        };
-    }, [currentIndex, isPlaying, pages]);
-
-
-    useEffect(() => {
-        getAllValidation().then(data => data && setapiData(data))
-    }, []);
+    const {
+        pages,
+        setPages,
+        apiData,
+        cacheMoyennes,
+        isPlaying,
+        setCurrentIndex,
+        setIsPlaying,
+        currentIndex,
+        nextPage,
+        timeLeft
+    } = usePageLooper();
 
     if (!apiData.length) {
         return (

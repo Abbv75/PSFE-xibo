@@ -1,8 +1,8 @@
 import React from "react";
-import PageLooper from "./components/PageLooper";
+import { PageLooperProvider } from "./contexts/PageLooper";
 
 const App: React.FC = () => {
-  return <PageLooper />;
+  return <PageLooperProvider />;
 };
 
 export default App;

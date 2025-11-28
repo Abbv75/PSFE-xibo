@@ -10,9 +10,9 @@ export default [
         duration: 30000,
     },
     {
-        id: "Suivi des indicateurs",
+        id: "SuiviDesIndicateurs",
         component: <SuiviDesIndicateurs />,
-        duration: 100000,
+        duration: 1000,
     },
     {
         id: "PrixMoyenProduitParRegion Oignon bulbe",
