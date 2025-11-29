@@ -10,7 +10,7 @@ import {
 } from "chart.js";
 import { Bar } from 'react-chartjs-2';
 import { Stack, Typography } from "@mui/joy";
-import { green, grey } from "@mui/material/colors";
+import { blue, green, grey, orange } from "@mui/material/colors";
 
 ChartJS.register(
     CategoryScale,
@@ -41,12 +41,14 @@ export default () => {
                     datasets: suiviPTBAProgramme?.donnees_graphique.series.map(({ name, data }) => ({
                         label: name,
                         data: data,
-                        backgroundColor: green[600],
-                    })) || []
+                        backgroundColor: [green[600], orange[600], blue[600]],
+
+                    })) || [],
+
                 }}
                 options={{
                     responsive: true,
-                    plugins: { legend: { display: true, } },
+                    plugins: { legend: { display: true, },  },
                     scales: { y: { beginAtZero: true, max: 100 } },
                 }}
                 style={{

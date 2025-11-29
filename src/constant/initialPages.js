@@ -20,31 +20,31 @@ export default [
     {
         id: "SuiviPTBAProgramme",
         component: <SuiviPTBAProgramme />,
-        duration: 1000,
+        duration: 30000,
     },
     {
         id: "RealisationCumule",
         component: <RealisationCumule />,
-        duration: 100000,
+        duration: 30000,
     },
     {
         id: "SuivitPTBAConsolide",
         component: <SuiviPTBAConsolide />,
-        duration: 1000,
+        duration: 30000,
     },
-    {
-        id: "PrixMoyenProduitParRegion Oignon bulbe",
-        component: <PrixMoyenProduitParRegion produit="Oignon bulbe" />,
-        duration: 10000,
-    },
-    {
-        id: "PrixMoyenProduitParRegion Oignon Local",
-        component: <PrixMoyenProduitParRegion produit="Oignon Local" />,
-        duration: 10000,
-    },
-    {
-        id: "PrixCategorieParRegion",
-        component: <PrixCategorieParRegion />,
-        duration: 10000,
-    },
+    // {
+    //     id: "PrixMoyenProduitParRegion Oignon bulbe",
+    //     component: <PrixMoyenProduitParRegion produit="Oignon bulbe" />,
+    //     duration: 10000,
+    // },
+    // {
+    //     id: "PrixMoyenProduitParRegion Oignon Local",
+    //     component: <PrixMoyenProduitParRegion produit="Oignon Local" />,
+    //     duration: 10000,
+    // },
+    // {
+    //     id: "PrixCategorieParRegion",
+    //     component: <PrixCategorieParRegion />,
+    //     duration: 10000,
+    // },
 ];

@@ -4,7 +4,7 @@ module.exports = {
   webpack: {
     configure: {
       output: {
-        path: path.resolve(__dirname, 'PSFEXibo'),  // Replace with your target folder
+        path: path.resolve(__dirname, ''),  // Replace with your target folder
       },
     },
   },

@@ -16,7 +16,7 @@ const PageAccueil: React.FC = () => {
             }}
             height="100vh"
         >
-            <ChargeurDePage />
+            {/* <ChargeurDePage /> */}
 
             <Stack direction="row" gap={'1vw'} justifyContent="center" alignContent={'center'} flexWrap="wrap">
                 {[IMAGES.logo, IMAGES.minister1, IMAGES.minister2].map(value => (
@@ -29,14 +29,14 @@ const PageAccueil: React.FC = () => {
             </Stack>
 
             <Typography level="h2" fontSize="3vw" fontWeight="lg">
-                PSFE Cameroun
+               Fonds Commun PSFE
             </Typography>
             <Typography level="h4" fontSize="2.5vw" fontWeight="md">
                 Programme sectoriel forêts et environnement du Cameroun
             </Typography>
 
             {/* Liste des partenaires */}
-            <Box sx={{ mt: 5 }}>
+            {/* <Box sx={{ mt: 5 }}>
                 <Typography level="h4" fontSize="2vw" fontWeight="md" mb={2}>
                     Nos différents Partenaires
                 </Typography>
@@ -56,7 +56,7 @@ const PageAccueil: React.FC = () => {
                     </Stack>
                 </Marquee>
 
-            </Box>
+            </Box> */}
         </Stack>
     );
 };

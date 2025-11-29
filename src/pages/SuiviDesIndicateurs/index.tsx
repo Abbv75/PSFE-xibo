@@ -11,7 +11,7 @@ export default () => {
             return {
                 id: `Suivit-inidicateurs-${value.code_ref_ind}`,
                 component: <Component data={value} />,
-                duration: 50000,
+                duration: 30000,
                 preload: true
             }
         })
