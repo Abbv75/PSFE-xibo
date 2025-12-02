@@ -1,0 +1,1 @@
+export {default as getPtba_zibo} from "./get"

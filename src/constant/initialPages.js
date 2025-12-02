@@ -3,6 +3,7 @@ import PrixCategorieParRegion from "../pages/PrixCategorieParRegion";
 import PrixMoyenProduitParRegion from "../pages/PrixMoyenProduitParRegion";
 import RealisationCumule from "../pages/RealisationCumule";
 import SuiviDesIndicateurs from "../pages/SuiviDesIndicateurs";
+import SuiviPTBA from "../pages/SuiviPTBA";
 import SuiviPTBAConsolide from "../pages/SuiviPTBAConsolide";
 import SuiviPTBAProgramme from "../pages/SuiviPTBAProgramme";
 
@@ -31,6 +32,11 @@ export default [
         id: "SuivitPTBAConsolide",
         component: <SuiviPTBAConsolide />,
         duration: 30000,
+    },
+    {
+        id: "PTBA_ZIBO",
+        component: <SuiviPTBA />,
+        duration: 300000,
     },
     // {
     //     id: "PrixMoyenProduitParRegion Oignon bulbe",

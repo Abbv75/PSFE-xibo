@@ -12,6 +12,8 @@ import { getSuiviPTBAProgramme } from '../../service/suiviPTBAProgramme';
 import { SUIVI_PTBA_PROGRAMME_T } from '../../service/suiviPTBAProgramme/get';
 import { getRealisationCumule } from '../../service/realisationCumule';
 import { REALISATION_CUMULE_T } from '../../service/realisationCumule/get';
+import { getPtba_zibo } from '../../service/ptba_zibo';
+import { PTBA_ZIBO_T } from '../../service/ptba_zibo/get';
 
 export default () => {
     const [pages, setPages] = useState<PAGE_T[]>(INITIAL_PAGES);
@@ -20,6 +22,7 @@ export default () => {
     const [suiviPTBAConsolide, setsuiviPTBAConsolide] = useState<SUIVI_PTBA_CONSOLIDE_T | undefined>();
     const [suiviPTBAProgramme, setsuiviPTBAProgramme] = useState<SUIVI_PTBA_PROGRAMME_T | undefined>();
     const [realisationCumuleData, setrealisationCumuleData] = useState<REALISATION_CUMULE_T | undefined>();
+    const [ptba_ziboData, setptba_ziboData] = useState<PTBA_ZIBO_T[]>([])
 
     const [apiData, setapiData] = useState<GET_ALL_VALIDATION_T[]>([]);
 
@@ -38,6 +41,7 @@ export default () => {
         getSuiviPTBAConsolide().then(res => res && setsuiviPTBAConsolide(res));
         getSuiviPTBAProgramme().then(res => res && setsuiviPTBAProgramme(res));
         getRealisationCumule().then(res => res && setrealisationCumuleData(res));
+        getPtba_zibo().then(res => res && setptba_ziboData(res));
     }
 
     useEffect(() => {
@@ -81,7 +85,8 @@ export default () => {
         suiviIndicateurData,
         suiviPTBAConsolide,
         suiviPTBAProgramme,
-        realisationCumuleData
+        realisationCumuleData,
+        ptba_ziboData
     }
 
     return (

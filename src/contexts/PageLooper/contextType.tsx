@@ -1,3 +1,4 @@
+import { PTBA_ZIBO_T } from "../../service/ptba_zibo/get";
 import { REALISATION_CUMULE_T } from "../../service/realisationCumule/get";
 import { SUIVI_PTBA_CONSOLIDE_T } from "../../service/suiviPTBAConsolide/get";
 import { SUIVI_PTBA_PROGRAMME_T } from "../../service/suiviPTBAProgramme/get";
@@ -18,4 +19,5 @@ export default interface contextType {
     suiviPTBAConsolide?: SUIVI_PTBA_CONSOLIDE_T,
     suiviPTBAProgramme?: SUIVI_PTBA_PROGRAMME_T,
     realisationCumuleData?: REALISATION_CUMULE_T,
+    ptba_ziboData: PTBA_ZIBO_T[]
 }
