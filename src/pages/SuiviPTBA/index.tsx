@@ -11,7 +11,7 @@ export default () => {
             return {
                 id: `ptba-zibo-${index}`,
                 component: <Component data={value} />,
-                duration: 30000,
+                duration: 50000,
                 preload: true
             }
         })

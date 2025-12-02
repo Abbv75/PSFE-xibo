@@ -1,9 +1,7 @@
 import React from "react";
-import { Stack, Typography, Box } from "@mui/joy";
-import { IMAGES, PARTENAIRE_IMAMGE } from "../../constant";
+import { Stack, Typography } from "@mui/joy";
+import { IMAGES } from "../../constant";
 import { CardMedia } from "@mui/material";
-import ChargeurDePage from "./ChargeurDePage";
-import Marquee from "react-fast-marquee";
 
 const PageAccueil: React.FC = () => {
     return (
@@ -16,7 +14,6 @@ const PageAccueil: React.FC = () => {
             }}
             height="100vh"
         >
-            {/* <ChargeurDePage /> */}
 
             <Stack direction="row" gap={'1vw'} justifyContent="center" alignContent={'center'} flexWrap="wrap">
                 {[IMAGES.logo, IMAGES.minister1, IMAGES.minister2].map(value => (
