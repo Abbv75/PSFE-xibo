@@ -27,11 +27,11 @@ export default [
         component: <SuiviPTBAProgramme />,
         duration: 30000,
     },
-    {
-        id: "RealisationCumule",
-        component: <RealisationCumule />,
-        duration: 30000,
-    },
+    // {
+    //     id: "RealisationCumule",
+    //     component: <RealisationCumule />,
+    //     duration: 30000,
+    // },
     {
         id: "SuivitPTBAConsolide",
         component: <SuiviPTBAConsolide />,

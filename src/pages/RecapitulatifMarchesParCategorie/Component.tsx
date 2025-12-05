@@ -4,12 +4,14 @@ import { grey } from '@mui/material/colors';
 import {
     Chart as ChartJS, Tooltip,
     Legend,
-    ArcElement
+    ArcElement,
+    Title
 } from "chart.js";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Doughnut } from 'react-chartjs-2';
 import TableCustom from '../../components/TableCustome';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend, Title, ChartDataLabels);
 
 const colors = [
     "#4e79a7",
@@ -89,6 +91,7 @@ const Component = ({ data }: { data: transformPPMDataForVersion_T }) => {
                                     data: data.donutData.map(d => d.value),
                                     backgroundColor: data.donutData.map((_, i) => colors[i % colors.length]),
                                     borderWidth: 1,
+                                    label: "Pourcentage du cout sur le total",
                                 },
                             ],
                         }}
@@ -96,6 +99,24 @@ const Component = ({ data }: { data: transformPPMDataForVersion_T }) => {
                             responsive: true,
                             plugins: {
                                 legend: { display: true, },
+                                title: {
+                                    display: true,
+                                    text: "Répartition du cout total par catégories",
+                                    font: { size: 18, weight: "bold" },
+                                    padding: 20
+                                },
+                                datalabels: {
+                                    color: 'white',          // couleur du texte
+                                    formatter: (value, ctx) => {
+                                        const dataset = ctx.chart.data.datasets[0].data;
+                                        //@ts-ignore
+                                        const total = dataset.reduce((a: number, b: number) => a + b, 0);
+                                        //@ts-ignore
+                                        const percentage = ((value as number) / total) * 100;
+                                        return `${percentage.toFixed(1)}%`;  // formatage en pourcentage
+                                    },
+                                    font: { weight: 'bold', size: 14 },
+                                }
                             },
                         }}
                     />
