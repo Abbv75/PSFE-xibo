@@ -183,3 +183,20 @@ export interface transformPPMDataForVersion_T {
     value: number;
   }>;
 }
+
+export interface API_mobile_activite_T {
+    code: string;
+    libelle: string;
+    etapes?: string;  // parfois "-"
+    etapes_valeur?: number;
+    indicateurs?: string; // parfois "-"
+    indicateurs_valeur?: number;
+    pourcentage_decaissement: string;
+    pourcentage_decaissement_valeur: number;
+    pourcentage_engagement: string;
+    pourcentage_engagement_valeur: number;
+    has_engagement_issue: boolean;
+    cout_prevu: number;
+    cout_realise: number;
+    cout_engage: number;
+}

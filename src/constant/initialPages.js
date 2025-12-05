@@ -1,3 +1,4 @@
+import AvancementGlobalDuPTBAParActivite from "../pages/AvancementGlobalDuPTBAParActivite";
 import PageAccueil from "../pages/PageAccueil";
 import RealisationCumule from "../pages/RealisationCumule";
 import RecapitulatifMarchesParCategorie from "../pages/RecapitulatifMarchesParCategorie";
@@ -13,13 +14,13 @@ export default [
         duration: 30000,
     },
     {
-        id: "SuiviDesIndicateurs",
-        component: <SuiviDesIndicateurs />,
-        duration: 1000,
+        id: "AvancementGlobalDuPTBAParActivite",
+        component: <AvancementGlobalDuPTBAParActivite />,
+        duration: 100000,
     },
     {
-        id: "RecapitulatifMarchesParCategorie",
-        component: <RecapitulatifMarchesParCategorie />,
+        id: "SuiviDesIndicateurs",
+        component: <SuiviDesIndicateurs />,
         duration: 1000,
     },
     {
@@ -40,6 +41,11 @@ export default [
     {
         id: "PTBA_ZIBO",
         component: <SuiviPTBA />,
+        duration: 1000,
+    },
+    {
+        id: "RecapitulatifMarchesParCategorie",
+        component: <RecapitulatifMarchesParCategorie />,
         duration: 1000,
     },
 ];
