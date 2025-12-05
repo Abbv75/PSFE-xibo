@@ -23,4 +23,5 @@ export default interface contextType {
     API_mobile_ppmData?: API_MOBILE_PPM_T,
     API_mobile_activiteData: API_mobile_activite_T[]
     API_mobile_actionData: API_mobile_activite_T[]
+    API_mobile_programmeData: API_mobile_activite_T[]
 }

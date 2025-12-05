@@ -24,7 +24,7 @@ export default () => {
         }
 
         setPages(prev => [
-            ...prev.filter(p => !p.id.startsWith("AvancementGlobalDuPTBAParActivite")),
+            ...prev.filter(p => !p.id.startsWith("AvancementGlobalDuPTBAParAction")),
             ...newPages
         ]);
     }, [API_mobile_actionData, setPages]);

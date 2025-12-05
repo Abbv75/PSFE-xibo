@@ -1,5 +1,6 @@
 import AvancementGlobalDuPTBAParAction from "../pages/AvancementGlobalDuPTBAParAction";
 import AvancementGlobalDuPTBAParActivite from "../pages/AvancementGlobalDuPTBAParActivite";
+import AvancementGlobalDuPTBAParProgramme from "../pages/AvancementGlobalDuPTBAParProgramme";
 import PageAccueil from "../pages/PageAccueil";
 import RealisationCumule from "../pages/RealisationCumule";
 import RecapitulatifMarchesParCategorie from "../pages/RecapitulatifMarchesParCategorie";
@@ -13,11 +14,6 @@ export default [
         id: "accueil",
         component: <PageAccueil />,
         duration: 30000,
-    },
-    {
-        id: "AvancementGlobalDuPTBAParAction",
-        component: <AvancementGlobalDuPTBAParAction />,
-        duration: 100000,
     },
     {
         id: "SuiviDesIndicateurs",
@@ -52,6 +48,16 @@ export default [
     {
         id: "AvancementGlobalDuPTBAParActivite",
         component: <AvancementGlobalDuPTBAParActivite />,
-        duration: 100000,
+        duration: 1000,
+    },
+    {
+        id: "AvancementGlobalDuPTBAParAction",
+        component: <AvancementGlobalDuPTBAParAction />,
+        duration: 1000,
+    },
+    {
+        id: "AvancementGlobalDuPTBAParProgramme",
+        component: <AvancementGlobalDuPTBAParProgramme />,
+        duration: 1000,
     },
 ];
