@@ -22,4 +22,5 @@ export default interface contextType {
     ptba_ziboData: PTBA_ZIBO_T[],
     API_mobile_ppmData?: API_MOBILE_PPM_T,
     API_mobile_activiteData: API_mobile_activite_T[]
+    API_mobile_actionData: API_mobile_activite_T[]
 }

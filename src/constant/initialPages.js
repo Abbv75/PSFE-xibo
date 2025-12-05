@@ -1,3 +1,4 @@
+import AvancementGlobalDuPTBAParAction from "../pages/AvancementGlobalDuPTBAParAction";
 import AvancementGlobalDuPTBAParActivite from "../pages/AvancementGlobalDuPTBAParActivite";
 import PageAccueil from "../pages/PageAccueil";
 import RealisationCumule from "../pages/RealisationCumule";
@@ -14,8 +15,8 @@ export default [
         duration: 30000,
     },
     {
-        id: "AvancementGlobalDuPTBAParActivite",
-        component: <AvancementGlobalDuPTBAParActivite />,
+        id: "AvancementGlobalDuPTBAParAction",
+        component: <AvancementGlobalDuPTBAParAction />,
         duration: 100000,
     },
     {
@@ -47,5 +48,10 @@ export default [
         id: "RecapitulatifMarchesParCategorie",
         component: <RecapitulatifMarchesParCategorie />,
         duration: 1000,
+    },
+    {
+        id: "AvancementGlobalDuPTBAParActivite",
+        component: <AvancementGlobalDuPTBAParActivite />,
+        duration: 100000,
     },
 ];

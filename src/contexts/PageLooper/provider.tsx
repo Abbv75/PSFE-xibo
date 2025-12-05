@@ -14,7 +14,7 @@ import { getRealisationCumule } from '../../service/realisationCumule';
 import { REALISATION_CUMULE_T } from '../../service/realisationCumule/get';
 import { getPtba_zibo } from '../../service/ptba_zibo';
 import { PTBA_ZIBO_T } from '../../service/ptba_zibo/get';
-import { getAPI_mobile_activite, getAPI_mobile_ppm } from '../../service/be_repport_api';
+import { getAPI_mobile_action, getAPI_mobile_activite, getAPI_mobile_ppm } from '../../service/be_repport_api';
 
 export default () => {
     const [pages, setPages] = useState<PAGE_T[]>(INITIAL_PAGES);
@@ -26,6 +26,7 @@ export default () => {
     const [ptba_ziboData, setptba_ziboData] = useState<PTBA_ZIBO_T[]>([]);
     const [API_mobile_ppmData, setAPI_mobile_ppmData] = useState<API_MOBILE_PPM_T | undefined>(undefined);
     const [API_mobile_activiteData, setAPI_mobile_activiteData] = useState<API_mobile_activite_T[]>([])
+    const [API_mobile_actionData, setAPI_mobile_actionData] = useState<API_mobile_activite_T[]>([])
 
     const [apiData, setapiData] = useState<GET_ALL_VALIDATION_T[]>([]);
 
@@ -47,6 +48,7 @@ export default () => {
         getPtba_zibo().then(res => res && setptba_ziboData(res));
         getAPI_mobile_ppm().then(res => res && setAPI_mobile_ppmData(res));
         getAPI_mobile_activite().then(res => res && setAPI_mobile_activiteData(res));
+        getAPI_mobile_action().then(res => res && setAPI_mobile_actionData(res));
     }
 
     useEffect(() => {
@@ -93,7 +95,8 @@ export default () => {
         realisationCumuleData,
         ptba_ziboData,
         API_mobile_ppmData,
-        API_mobile_activiteData
+        API_mobile_activiteData,
+        API_mobile_actionData
     }
 
     return (
