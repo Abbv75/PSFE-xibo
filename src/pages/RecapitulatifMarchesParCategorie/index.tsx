@@ -21,7 +21,7 @@ export default () => {
                 if (!viewData) return null; // On ignore cette version
 
                 return {
-                    id: `PPM-Version-${version.id_version}`,
+                    id: `RecapitulatifMarchesParCategorie-${version.id_version}`,
                     component: <Component data={viewData} />,
                     duration: 30000,
                     preload: true
@@ -30,7 +30,7 @@ export default () => {
             .filter((p) => p !== null);
 
         setPages(prev => [
-            ...prev.filter(p => !p.id.startsWith("PPM-Version-")),
+            ...prev.filter(p => !p.id.startsWith("RecapitulatifMarchesParCategorie")),
             ...newPages
         ]);
     }, [API_mobile_ppmData]);

@@ -11,6 +11,19 @@ import TableCustom from '../../components/TableCustome';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+const colors = [
+    "#4e79a7",
+    "#f28e2b",
+    "#e15759",
+    "#76b7b2",
+    "#59a14f",
+    "#edc948",
+    "#b07aa1",
+    "#ff9da7",
+    "#9c755f",
+    "#bab0ab",
+];
+
 const Component = ({ data }: { data: transformPPMDataForVersion_T }) => {
     return (
         <Stack sx={{ gap: 3, p: 3 }}>
@@ -74,17 +87,16 @@ const Component = ({ data }: { data: transformPPMDataForVersion_T }) => {
                             datasets: [
                                 {
                                     data: data.donutData.map(d => d.value),
+                                    backgroundColor: data.donutData.map((_, i) => colors[i % colors.length]),
+                                    borderWidth: 1,
                                 },
                             ],
                         }}
                         options={{
                             responsive: true,
                             plugins: {
-                                legend: { display: true },
+                                legend: { display: true, },
                             },
-                        }}
-                        style={{
-                            maxWidth: '100%'
                         }}
                     />
                 </Grid>

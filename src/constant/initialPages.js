@@ -20,7 +20,7 @@ export default [
     {
         id: "RecapitulatifMarchesParCategorie",
         component: <RecapitulatifMarchesParCategorie />,
-        duration: 100000,
+        duration: 1000,
     },
     {
         id: "SuiviPTBAProgramme",
