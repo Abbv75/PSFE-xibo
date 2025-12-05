@@ -1,0 +1,1 @@
+export { default as getAPI_mobile_ppm } from "./API_mobile_ppm"

@@ -4,7 +4,7 @@ import PageLooper from '../../components/PageLooper';
 import { useState, useRef, useEffect } from 'react';
 import INITIAL_PAGES from '../../constant/initialPages';
 import getAllValidation from '../../service/prixMarche/getAllValidation';
-import { PAGE_T, GET_ALL_VALIDATION_T, SUIVI_INDICATEUR_T } from '../../types';
+import { PAGE_T, GET_ALL_VALIDATION_T, SUIVI_INDICATEUR_T, API_MOBILE_PPM_T } from '../../types';
 import { getAllSuiviIndicateurs } from '../../service/suiviIndicateurs';
 import { getSuiviPTBAConsolide } from '../../service/suiviPTBAConsolide';
 import { SUIVI_PTBA_CONSOLIDE_T } from '../../service/suiviPTBAConsolide/get';
@@ -14,6 +14,7 @@ import { getRealisationCumule } from '../../service/realisationCumule';
 import { REALISATION_CUMULE_T } from '../../service/realisationCumule/get';
 import { getPtba_zibo } from '../../service/ptba_zibo';
 import { PTBA_ZIBO_T } from '../../service/ptba_zibo/get';
+import { getAPI_mobile_ppm } from '../../service/be_repport_api';
 
 export default () => {
     const [pages, setPages] = useState<PAGE_T[]>(INITIAL_PAGES);
@@ -22,7 +23,8 @@ export default () => {
     const [suiviPTBAConsolide, setsuiviPTBAConsolide] = useState<SUIVI_PTBA_CONSOLIDE_T | undefined>();
     const [suiviPTBAProgramme, setsuiviPTBAProgramme] = useState<SUIVI_PTBA_PROGRAMME_T | undefined>();
     const [realisationCumuleData, setrealisationCumuleData] = useState<REALISATION_CUMULE_T | undefined>();
-    const [ptba_ziboData, setptba_ziboData] = useState<PTBA_ZIBO_T[]>([])
+    const [ptba_ziboData, setptba_ziboData] = useState<PTBA_ZIBO_T[]>([]);
+    const [API_mobile_ppmData, setAPI_mobile_ppmData] = useState<API_MOBILE_PPM_T | undefined>(undefined)
 
     const [apiData, setapiData] = useState<GET_ALL_VALIDATION_T[]>([]);
 
@@ -42,6 +44,7 @@ export default () => {
         getSuiviPTBAProgramme().then(res => res && setsuiviPTBAProgramme(res));
         getRealisationCumule().then(res => res && setrealisationCumuleData(res));
         getPtba_zibo().then(res => res && setptba_ziboData(res));
+        getAPI_mobile_ppm().then(res => res && setAPI_mobile_ppmData(res));
     }
 
     useEffect(() => {
@@ -86,7 +89,8 @@ export default () => {
         suiviPTBAConsolide,
         suiviPTBAProgramme,
         realisationCumuleData,
-        ptba_ziboData
+        ptba_ziboData,
+        API_mobile_ppmData
     }
 
     return (

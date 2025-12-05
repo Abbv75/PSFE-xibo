@@ -1,5 +1,6 @@
 import PageAccueil from "../pages/PageAccueil";
 import RealisationCumule from "../pages/RealisationCumule";
+import RecapitulatifMarchesParCategorie from "../pages/RecapitulatifMarchesParCategorie";
 import SuiviDesIndicateurs from "../pages/SuiviDesIndicateurs";
 import SuiviPTBA from "../pages/SuiviPTBA";
 import SuiviPTBAConsolide from "../pages/SuiviPTBAConsolide";
@@ -15,6 +16,11 @@ export default [
         id: "SuiviDesIndicateurs",
         component: <SuiviDesIndicateurs />,
         duration: 1000,
+    },
+    {
+        id: "RecapitulatifMarchesParCategorie",
+        component: <RecapitulatifMarchesParCategorie />,
+        duration: 100000,
     },
     {
         id: "SuiviPTBAProgramme",

@@ -101,3 +101,85 @@ export interface SUIVI_INDICATEUR_T {
   projet: string;
   donnees_annees: SUIVI_INDICATEUR_DONNEE_ANNEE_T[];
 }
+
+export interface API_MOBILE_PPM_T {
+  versions: {
+    id_version: number;
+    annee: number;
+    date_version: string;
+    numero_version: string;
+  }[];
+
+  categories: {
+    code: string;
+    nom: string;
+    versions: {
+      [versionId: string]: {
+        id_version: string;
+        info_version: {
+          id_version: number;
+          annee: number;
+          date_version: string;
+          numero_version: string;
+        };
+        nombre_marches: number;
+        cout_total_usd: number;
+        montant_realise: number;
+        taux_realisation: number;
+        cout_total_usd_formatted: string;
+        montant_realise_formatted: string;
+        taux_realisation_formatted: string;
+      };
+    };
+    totaux_globaux: {
+      nombre_marches: number;
+      cout_total_usd: number;
+      montant_realise: number;
+    };
+  }[];
+
+  totaux_par_version: {
+    [versionId: string]: {
+      nombre_marches: number;
+      cout_total_usd: number;
+      montant_realise: number;
+      taux_realisation: number;
+      cout_total_usd_formatted: string;
+      montant_realise_formatted: string;
+      taux_realisation_formatted: string;
+    };
+  };
+
+  totaux_globaux: {
+    nombre_marches: number;
+    cout_total_usd: number;
+    montant_realise: number;
+    taux_realisation: number;
+    cout_total_usd_formatted: string;
+    montant_realise_formatted: string;
+    taux_realisation_formatted: string;
+  };
+}
+
+export interface transformPPMDataForVersion_T {
+  version: {
+    id: number;
+    numero: string;
+    annee: number;
+    date: string;
+  };
+
+  tableauCategories: Array<{
+    code: string;
+    nom: string;
+    nombre_marches: number;
+    cout_total_usd: number;
+    montant_realise: number;
+    taux_realisation: number;
+  }>;
+
+  donutData: Array<{
+    name: string;
+    value: number;
+  }>;
+}
