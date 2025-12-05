@@ -1,4 +1,5 @@
 import { usePageLooper } from "../../contexts/PageLooper";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -7,10 +8,10 @@ import {
     Title,
     Tooltip,
     Legend,
-} from "chart.js";
-import { Bar } from 'react-chartjs-2';
+} from 'chart.js';
 import { Stack, Typography } from "@mui/joy";
 import { blue, green, grey, orange } from "@mui/material/colors";
+import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
     CategoryScale,
@@ -18,11 +19,14 @@ ChartJS.register(
     BarElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
+    ChartDataLabels
 );
 
 export default () => {
     const { suiviPTBAProgramme } = usePageLooper();
+
+    const barColors = [blue[600], orange[600], green[600]];
 
     return (
         <Stack sx={{ gap: 3, p: 3 }}>
@@ -38,18 +42,25 @@ export default () => {
             <Bar
                 data={{
                     labels: suiviPTBAProgramme?.donnees_graphique.categories,
-                    datasets: suiviPTBAProgramme?.donnees_graphique.series.map(({ name, data }) => ({
-                        label: name,
-                        data: data,
-                        backgroundColor: [green[600], orange[600], blue[600]],
-
-                    })) || [],
-
+                    datasets:
+                        suiviPTBAProgramme?.donnees_graphique.series.map(({ name, data }, index) => ({
+                            label: name,
+                            data: data,
+                            backgroundColor: barColors[index % barColors.length], // applique bleu, orange, vert
+                        })) || [],
                 }}
                 options={{
                     responsive: true,
-                    plugins: { legend: { display: true, },  },
-                    scales: { y: { beginAtZero: true, max: 100 } },
+                    plugins: {
+                        legend: { display: true },
+                        datalabels: {
+                            color: 'white', // couleur des labels,
+                            font: { weight: 'bold', size: 14 },
+                        },
+                    },
+                    scales: {
+                        y: { beginAtZero: true, max: 100 },
+                    },
                 }}
                 style={{
                     maxHeight: '70vh',
