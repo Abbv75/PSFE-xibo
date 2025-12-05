@@ -1,5 +1,9 @@
+import AvancementGlobalDuPTBAParAction from "../pages/AvancementGlobalDuPTBAParAction";
+import AvancementGlobalDuPTBAParActivite from "../pages/AvancementGlobalDuPTBAParActivite";
+import AvancementGlobalDuPTBAParProgramme from "../pages/AvancementGlobalDuPTBAParProgramme";
 import PageAccueil from "../pages/PageAccueil";
 import RealisationCumule from "../pages/RealisationCumule";
+import RecapitulatifMarchesParCategorie from "../pages/RecapitulatifMarchesParCategorie";
 import SuiviDesIndicateurs from "../pages/SuiviDesIndicateurs";
 import SuiviPTBA from "../pages/SuiviPTBA";
 import SuiviPTBAConsolide from "../pages/SuiviPTBAConsolide";
@@ -21,11 +25,11 @@ export default [
         component: <SuiviPTBAProgramme />,
         duration: 30000,
     },
-    {
-        id: "RealisationCumule",
-        component: <RealisationCumule />,
-        duration: 30000,
-    },
+    // {
+    //     id: "RealisationCumule",
+    //     component: <RealisationCumule />,
+    //     duration: 30000,
+    // },
     {
         id: "SuivitPTBAConsolide",
         component: <SuiviPTBAConsolide />,
@@ -34,6 +38,26 @@ export default [
     {
         id: "PTBA_ZIBO",
         component: <SuiviPTBA />,
+        duration: 1000,
+    },
+    {
+        id: "RecapitulatifMarchesParCategorie",
+        component: <RecapitulatifMarchesParCategorie />,
+        duration: 1000,
+    },
+    {
+        id: "AvancementGlobalDuPTBAParActivite",
+        component: <AvancementGlobalDuPTBAParActivite />,
+        duration: 1000,
+    },
+    {
+        id: "AvancementGlobalDuPTBAParAction",
+        component: <AvancementGlobalDuPTBAParAction />,
+        duration: 1000,
+    },
+    {
+        id: "AvancementGlobalDuPTBAParProgramme",
+        component: <AvancementGlobalDuPTBAParProgramme />,
         duration: 1000,
     },
 ];
