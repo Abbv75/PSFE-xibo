@@ -1,17 +1,10 @@
 import { usePageLooper } from "../../contexts/PageLooper";
-import {
-    Chart as ChartJS,
-    ArcElement,
-    Tooltip,
-    Legend,
-} from "chart.js";
-import { Pie } from "react-chartjs-2";
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
 import { Stack, Typography, Grid } from "@mui/joy";
 import { green, red, grey } from "@mui/material/colors";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
-
-export default () => {
+export default function RealisationCumulee() {
     const { realisationCumuleData } = usePageLooper();
 
     const indicateurs = realisationCumuleData?.indicateurs || [];
@@ -33,20 +26,53 @@ export default () => {
                     const reste = Math.max(ind.cible_totale - ind.total_realise, 0);
                     const unite = ind.unite || "";
 
-                    const labels = [
-                        `${realise.toLocaleString()} ${unite} réalisé`,
-                        `${reste.toLocaleString()} ${unite} restant`,
-                    ];
-
-                    const dataPie = {
-                        labels,
-                        datasets: [
+                    const options = {
+                        chart: {
+                            type: "pie",
+                            backgroundColor: "transparent",
+                        },
+                        title: {
+                            text: "",
+                        },
+                        tooltip: {
+                            pointFormat:
+                                `<b>{point.y} ${unite}</b> ({point.percentage:.1f}%)`,
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: "pointer",
+                                dataLabels: {
+                                    enabled: true,
+                                    format: "{point.name}<br>{point.y} " + unite,
+                                    style: {
+                                        fontSize: "11px",
+                                    },
+                                },
+                            },
+                        },
+                        series: [
                             {
-                                label: ind.intitule_ref_ind,
-                                data: [realise, reste],
-                                backgroundColor: [green[500], red[400]],
+                                name: ind.intitule_ref_ind,
+                                colorByPoint: true,
+                                data: [
+                                    {
+                                        name: `${realise.toLocaleString()} ${unite} réalisé`,
+                                        y: realise,
+                                        color: green[500],
+                                    },
+                                    {
+                                        name: `${reste.toLocaleString()} ${unite} restant`,
+                                        y: reste,
+                                        color: red[400],
+                                    },
+                                ],
                             },
                         ],
+                        credits: { enabled: false },
+                        legend: {
+                            enabled: true,
+                        },
                     };
 
                     return (
@@ -70,29 +96,9 @@ export default () => {
                                     {ind.intitule_ref_ind}
                                 </Typography>
 
-                                <Pie
-                                    data={dataPie}
-                                    options={{
-                                        responsive: true,
-                                        plugins: {
-                                            legend: {
-                                                display: true,
-                                                labels: {
-                                                    font: { size: 12 },
-                                                    padding: 10,
-                                                },
-                                            },
-                                            tooltip: {
-                                                callbacks: {
-                                                    label: (ctx) => {
-                                                        const value = ctx.raw;
-                                                        const label = ctx.label;
-                                                        return `${label} : ${value} ${unite}`;
-                                                    },
-                                                },
-                                            },
-                                        },
-                                    }}
+                                <HighchartsReact
+                                    highcharts={Highcharts}
+                                    options={options}
                                 />
                             </Stack>
                         </Grid>

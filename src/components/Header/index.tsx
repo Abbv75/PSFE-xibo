@@ -16,12 +16,17 @@ const Header: React.FC = () => {
             }}
         >
             {/* Logo projet */}
-            <Box
-                component="img"
-                src={IMAGES.logo}
-                alt="Logo PSFE Cameroun"
-                sx={{ height: '3vw', width: "auto" }}
-            />
+            <Stack gap={1} direction={'row'} >
+                {[IMAGES.logo, IMAGES.minister1, IMAGES.minister2].map((logo, index) => (
+                    <Box
+                        component="img"
+                        src={logo}
+                        alt=""
+                        sx={{ height: '3vw', width: "auto" }}
+                    />
+                ))}
+            </Stack>
+
 
             {/* Titre du projet */}
             <Stack spacing={0} sx={{ textAlign: "center" }}>
