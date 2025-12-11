@@ -12,11 +12,10 @@ const Component = ({ data }: { data: SUIVI_INDICATEUR_T }) => {
             type: "column",
             backgroundColor: "white",
             animation: false,
-            //@ts-ignore
-            // style:{height : '70vh'}
         },
 
         title: { text: "" },
+
         //@ts-ignore
         xAxis: {
             categories,
@@ -65,10 +64,18 @@ const Component = ({ data }: { data: SUIVI_INDICATEUR_T }) => {
                 color: orange[600],
             },
             {
-                type: "column",
+                type: "spline", // ← Réalisations en courbe
                 name: "Réalisations cumulées",
                 data: data.donnees_annees.map(d => d.realisation),
                 color: blue[600],
+                marker: {
+                    enabled: true,
+                    radius: 4,
+                    symbol: "circle",
+                },
+                tooltip: {
+                    valueSuffix: "",
+                },
             },
         ],
 
