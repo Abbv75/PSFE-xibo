@@ -5,6 +5,8 @@ import {
     TableBody,
     TableRow,
     TableCell,
+    SxProps,
+    Theme,
 } from "@mui/material";
 import { green } from "@mui/material/colors";
 
@@ -17,16 +19,19 @@ interface Column {
 interface TableCustomProps {
     columns: Column[];
     data: Record<string, any>[] | 'gap'[];
+    theadSx?: SxProps<Theme>;
+    tbodySx?: SxProps<Theme>;
 }
 
-const TableCustom: React.FC<TableCustomProps> = ({ columns, data }) => {
+
+const TableCustom: React.FC<TableCustomProps> = ({ columns, data, theadSx, tbodySx }) => {
     return (
         <Table>
             <TableHead
-                sx={{
+                sx={[{
                     bgcolor: green[900],
                     color: 'white',
-                }}
+                }, theadSx as any]}
             >
                 <TableRow>
                     {columns.map((col) => (
@@ -45,7 +50,7 @@ const TableCustom: React.FC<TableCustomProps> = ({ columns, data }) => {
                     ))}
                 </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody sx={tbodySx}>
 
                 {data.map((row, idx) => row == 'gap'
                     ? (

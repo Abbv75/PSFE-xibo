@@ -29,11 +29,11 @@ const Component = ({ API_mobile_activiteData, nbrPage }: { API_mobile_activiteDa
                             },
                             {
                                 key: 'pourcentage_decaissement',
-                                label: 'Pourcentage de décaissement'
+                                label: 'Décaissement (%)'
                             },
                             {
                                 key: 'pourcentage_engagement',
-                                label: 'Pourcentage d\'engagement'
+                                label: 'Engagement (%)'
                             },
                             {
                                 key: 'cout_prevu',
