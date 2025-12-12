@@ -5,6 +5,7 @@ import { PTBA_ZIBO_T } from "../../service/ptba_zibo/get";
 import { useMemo } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import LinearProgressCustom from "../../components/LinearProgressCustom";
 
 const colors = [
     "#4e79a7",
@@ -25,70 +26,37 @@ const Component = ({ data }: { data: PTBA_ZIBO_T }) => {
             const total_prop_percent = parseFloat(act.total_prop || "0");
             const taux_decaissement_percent = parseFloat(act.taux_decaissement || "0");
 
-            const renderLinear = (value: number, progressColor: string) => (
-                <Box
-                    sx={{
-                        position: "relative",
-                        width: "100%",
-                        height: 40,
-                        borderRadius: 1,
-                        overflow: "hidden",
-                        backgroundColor: "#4caf50",
-                    }}
-                >
-                    <LinearProgress
-                        determinate
-                        value={value}
-                        sx={{
-                            height: "100%",
-                            borderRadius: 1,
-                            "--LinearProgress-progressColor": progressColor,
-                            backgroundColor: green[700],
-                        }}
-                    />
-                    <Typography
-                        level="body-md"
-                        sx={{
-                            position: "absolute",
-                            width: "100%",
-                            top: 0,
-                            left: 0,
-                            height: "100%",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            color: "white",
-                            fontWeight: "bold",
-                        }}
-                    >
-                        {value.toFixed(2)}%
-                    </Typography>
-                </Box>
-            );
-
             return {
                 ...act,
                 total_prop_percent,
                 taux_decaissement_percent,
-                total_prop: renderLinear(total_prop_percent, colors[0]),
-                taux_decaissement: renderLinear(taux_decaissement_percent, colors[1]),
+                total_prop: LinearProgressCustom(total_prop_percent, colors[0]),
+                taux_decaissement: LinearProgressCustom(taux_decaissement_percent, colors[1]),
             };
         });
     }, [data]);
 
-    const allZero = transformedData.every((d) => d.total_prop_percent === 0);
+    const allZero = useMemo(
+        () => transformedData.every((d) => d.total_prop_percent === 0),
+        [transformedData]
+    );
 
     // Highcharts data
-    const pieSeries =
-        allZero
-            ? []
-            : transformedData.map((d, i) => ({
-                name: d.intitule_activite_ptba,
-                y: d.total_prop_percent,
-                color: colors[i % colors.length],
-            }));
+    const pieSeries = useMemo(
+        () => (
+            allZero
+                ? []
+                : transformedData.map((d, i) => ({
+                    name: d.intitule_activite_ptba,
+                    y: d.total_prop_percent,
+                    color: colors[i % colors.length],
+                }))
+        ),
+        [transformedData]
+    )
 
-    const pieOptions: Highcharts.Options = {
+
+    const pieOptions: Highcharts.Options = useMemo(() => ({
         chart: {
             type: "pie",
             backgroundColor: "white",
@@ -125,7 +93,7 @@ const Component = ({ data }: { data: PTBA_ZIBO_T }) => {
             },
         ],
         credits: { enabled: false },
-    };
+    }), [pieSeries]);
 
     return (
         <Stack sx={{ gap: 3, p: 3 }}>
@@ -143,14 +111,14 @@ const Component = ({ data }: { data: PTBA_ZIBO_T }) => {
                     <TableCustom
                         columns={[
                             { label: "Intitulé", key: "intitule_activite_ptba" },
-                            { label: "Étapes", key: "total_prop" },
+                            { label: "Avancement", key: "total_prop" },
                             { label: "Taux de décaissement", key: "taux_decaissement" },
                         ]}
                         data={transformedData}
                     />
                 </Grid>
 
-                {!allZero && pieSeries.length > 0 && (
+                {!allZero && pieSeries?.length  && (
                     <Grid xs={12} md={4}>
                         <HighchartsReact
                             highcharts={Highcharts}

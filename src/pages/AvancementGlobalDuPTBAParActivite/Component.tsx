@@ -25,7 +25,7 @@ const Component = ({ API_mobile_activiteData, nbrPage }: { API_mobile_activiteDa
                             },
                             {
                                 key: 'etapes',
-                                label: 'Etapes'
+                                label: 'Avancement'
                             },
                             {
                                 key: 'pourcentage_decaissement',
