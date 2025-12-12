@@ -1,6 +1,6 @@
 import axios from "axios";
 
-interface ActivitePTBA {
+export interface ActivitePTBA {
   code_activite_ptba: string;
   couleur_retard: string;
   derniere_date_fin: string;

@@ -54,6 +54,9 @@ const Component = ({ API_mobile_actionData, nbrPage }: { API_mobile_actionData: 
                             cout_realise: d.cout_realise.toLocaleString(),
                             cout_engage: d.cout_engage.toLocaleString(),
                         }))}
+                        theadSx={{"& *":{
+                            fontSize : '1vw !important'
+                        }}}
                     />
                 </Grid>
             </Grid>

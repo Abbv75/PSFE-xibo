@@ -2,8 +2,12 @@ import { Stack, Typography, Grid } from '@mui/joy';
 import { API_mobile_activite_T } from '../../types';
 import { grey } from '@mui/material/colors';
 import TableCustom from '../../components/TableCustome';
+import { usePageLooper } from '../../contexts/PageLooper';
+import findResponsableByActivite from '../../helpers/activitePTBA/findResponsableByActivite';
 
 const Component = ({ API_mobile_activiteData, nbrPage }: { API_mobile_activiteData: API_mobile_activite_T[], nbrPage?: number }) => {
+    const { ptba_ziboData } = usePageLooper();
+
     return (
         <Stack sx={{ gap: 3, p: 3 }}>
             <Typography
@@ -20,8 +24,16 @@ const Component = ({ API_mobile_activiteData, nbrPage }: { API_mobile_activiteDa
                     <TableCustom
                         columns={[
                             {
+                                key: 'code',
+                                label: 'Code'
+                            },
+                            {
                                 key: 'libelle',
                                 label: 'Libelle'
+                            },
+                            {
+                                key: 'responsable',
+                                label: 'Responsable'
                             },
                             {
                                 key: 'etapes',
@@ -53,7 +65,13 @@ const Component = ({ API_mobile_activiteData, nbrPage }: { API_mobile_activiteDa
                             cout_prevu: d.cout_prevu.toLocaleString(),
                             cout_realise: d.cout_realise.toLocaleString(),
                             cout_engage: d.cout_engage.toLocaleString(),
+                            responsable: findResponsableByActivite(d.code, ptba_ziboData)
                         }))}
+                        theadSx={{
+                            "& *": {
+                                fontSize: '1vw !important'
+                            }
+                        }}
                     />
                 </Grid>
             </Grid>
