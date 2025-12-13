@@ -7,7 +7,6 @@ import { API_mobile_activite_T, API_MOBILE_PPM_T, PAGE_T, SUIVI_INDICATEUR_T, US
 export default interface contextType {
     pages: PAGE_T[],
     setPages: USE_STATE_T<PAGE_T[]>,
-    cacheMoyennes: { [produit: string]: any },
     currentIndex: number,
     setCurrentIndex: USE_STATE_T<number>,
     isPlaying: boolean,

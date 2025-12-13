@@ -28,8 +28,6 @@ export default () => {
     const [API_mobile_actionData, setAPI_mobile_actionData] = useState<API_mobile_activite_T[]>([])
     const [API_mobile_programmeData, setAPI_mobile_programmeData] = useState<API_mobile_activite_T[]>([])
 
-    const [cacheMoyennes] = useState<{ [produit: string]: any }>({});
-
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(true);
     const [timeLeft, setTimeLeft] = useState(pages[0].duration / 1000);
@@ -79,7 +77,6 @@ export default () => {
     const value: contextType = {
         pages,
         setPages,
-        cacheMoyennes,
         currentIndex,
         setCurrentIndex,
         isPlaying,
