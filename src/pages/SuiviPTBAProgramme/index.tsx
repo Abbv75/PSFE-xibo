@@ -80,18 +80,18 @@ export default function SuiviPTBAProgramme() {
     };
 
     return (
-        <Stack sx={{ gap: 3, p: 3 }}>
+        <Stack sx={{ gap: 1, p: 3 }}>
             <Typography
                 level="h4"
                 fontSize="2vw"
-                textColor={grey[700]}
-                fontWeight={300}
+                fontWeight={700}
+                textColor={green[50]}
             >
                 Suivi du PTBA par programme
             </Typography>
 
             <Stack
-                gap={10}
+                gap={1}
             >
                 <Box
                     sx={{

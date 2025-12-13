@@ -100,10 +100,10 @@ const Component = ({ data }: { data: PTBA_ZIBO_T }) => {
             <Typography
                 level="h4"
                 fontSize={"2vw"}
-                textColor={grey[700]}
+                textColor={green[50]}
                 fontWeight={300}
             >
-                Suivi des tâches de <b>{data.responsable}</b>
+                Suivi des tâches de <Typography fontWeight={700} textColor={green[50]} >{data.responsable}</Typography>
             </Typography>
 
             <Grid container spacing={2}>

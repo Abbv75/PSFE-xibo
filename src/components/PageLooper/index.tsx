@@ -1,21 +1,23 @@
-import { Box, LinearProgress, Sheet, Stack, Typography } from "@mui/joy";
-import PageLooperContext from "../../providers/PageLooperContext";
+import { LinearProgress, Stack } from "@mui/joy";
 import Header from "../Header";
 import ActionZone from "./ActionZone";
 import { usePageLooper } from "../../contexts/PageLooper";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import Background from "./Background";
+import Timer from "./Timer";
 
 const PageLooper = () => {
     const {
         pages,
         currentIndex,
-        timeLeft
     } = usePageLooper();
 
     const [showLoader, setshowLoader] = useState(true);
 
+    const currentPage = useMemo(() => pages[currentIndex], [pages, currentIndex]);
+
     useEffect(() => {
-        const timer  = setTimeout(() => {
+        const timer = setTimeout(() => {
             setshowLoader(false);
         }, 3000);
 
@@ -30,19 +32,11 @@ const PageLooper = () => {
 
     return (
         <>
-            {/* Decorations */}
-            <Box sx={{ position: "fixed", top: '-14vw', right: '-8vw', width: '25vw', height: '25vw', borderRadius: "50%", background: "linear-gradient(135deg, #4caf50, #ff9800)", zIndex: -1 }} />
-            <Box sx={{ position: "fixed", bottom: '-16vw', left: '1vw', width: '25vw', height: '25vw', borderRadius: '50%', background: "linear-gradient(45deg, #0e160cff, #06aa0eff)", zIndex: -1 }} />
+            {/* background */}
+            <Background />
 
             {/* Timer + page info */}
-            <Sheet
-                variant="soft"
-                sx={{ position: "fixed", top: pages[currentIndex].id != 'accueil' ? '5vw' : '1vw', right: '1vw', px: 2, py: 1, borderRadius: "md", boxShadow: "sm", zIndex: 1000 }}
-            >
-                <Typography level="body-lg" fontWeight="lg" fontSize={'1vw'}>
-                    ⏱ {timeLeft}s — Page {currentIndex + 1} / {pages.length}
-                </Typography>
-            </Sheet>
+            <Timer />
 
             <ActionZone />
 
@@ -51,9 +45,9 @@ const PageLooper = () => {
                 width={'100%'}
                 height={'100vh'}
             >
-                {pages[currentIndex].id != 'accueil' && (<Header />)}
+                {currentPage.id != 'accueil' && (<Header />)}
 
-                {pages[currentIndex]?.component}
+                {currentPage?.component}
             </Stack>
         </>
     );
