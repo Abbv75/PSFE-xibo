@@ -8,8 +8,8 @@ import {
     faArrowDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useEffect } from "react";
-import PageLooperContext from "../../providers/PageLooperContext";
+import { useEffect } from "react";
+import { usePageLooper } from "../../contexts/PageLooper";
 
 const ActionZone = () => {
     const {
@@ -18,7 +18,7 @@ const ActionZone = () => {
         pages,
         nextPage,
         setCurrentIndex,
-    } = useContext(PageLooperContext);
+    } = usePageLooper();
 
     const prevPage = () => setCurrentIndex((prev: number) => (prev === 0 ? pages.length - 1 : prev - 1));
     const firstPage = () => setCurrentIndex(0);
