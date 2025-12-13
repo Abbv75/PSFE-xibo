@@ -90,9 +90,7 @@ export default function SuiviPTBAProgramme() {
                 Suivi du PTBA par programme
             </Typography>
 
-            <Stack
-                gap={1}
-            >
+            <Stack>
                 <Box
                     sx={{
                         'thead *':{

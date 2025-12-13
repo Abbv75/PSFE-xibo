@@ -1,7 +1,7 @@
 import { Typography, LinearProgress, Box } from "@mui/joy";
-import { green } from "@mui/material/colors";
+import { blue, green } from "@mui/material/colors";
 
-export default (value: number, progressColor: string) => (
+export default (value: number, progressColor: string = blue[600]) => (
     <Box
         sx={{
             position: "relative",
