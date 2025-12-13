@@ -1,6 +1,6 @@
 import { Stack, Typography, Grid } from '@mui/joy';
 import { API_mobile_activite_T } from '../../types';
-import { grey } from '@mui/material/colors';
+import { green } from '@mui/material/colors';
 import TableCustom from '../../components/TableCustome';
 
 const Component = ({ API_mobile_programmeData, nbrPage }: { API_mobile_programmeData: API_mobile_activite_T[], nbrPage?: number }) => {
@@ -9,8 +9,8 @@ const Component = ({ API_mobile_programmeData, nbrPage }: { API_mobile_programme
             <Typography
                 level="h4"
                 fontSize="2vw"
-                textColor={grey[700]}
-                fontWeight={300}
+                textColor={green[50]}
+                fontWeight={700}
             >
                 Avancement global du PTBA par programme (Page {nbrPage})
             </Typography>

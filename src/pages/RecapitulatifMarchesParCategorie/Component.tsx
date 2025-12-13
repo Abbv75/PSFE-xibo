@@ -1,6 +1,6 @@
 import { Stack, Typography, Grid } from "@mui/joy";
 import { transformPPMDataForVersion_T } from "../../types";
-import { grey } from "@mui/material/colors";
+import { green, grey } from "@mui/material/colors";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import TableCustom from "../../components/TableCustome";
@@ -71,8 +71,8 @@ export default ({ data }: { data: transformPPMDataForVersion_T }) => {
             <Typography
                 level="h4"
                 fontSize="2vw"
-                textColor={grey[700]}
-                fontWeight={300}
+                textColor={green[50]}
+                fontWeight={700}
             >
                 Version : {data.version.numero} ({data.version.annee})
             </Typography>

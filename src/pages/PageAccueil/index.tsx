@@ -2,6 +2,7 @@ import React from "react";
 import { Stack, Typography } from "@mui/joy";
 import { IMAGES } from "../../constant";
 import { CardMedia } from "@mui/material";
+import { green } from "@mui/material/colors";
 
 const PageAccueil: React.FC = () => {
     return (
@@ -25,35 +26,12 @@ const PageAccueil: React.FC = () => {
                 ))}
             </Stack>
 
-            <Typography level="h2" fontSize="3vw" fontWeight="lg">
+            <Typography level="h2" fontSize="3vw" fontWeight="lg" textColor={green[50]}>
                Fonds Commun PSFE
             </Typography>
-            <Typography level="h4" fontSize="2.5vw" fontWeight="md">
+            <Typography level="h4" fontSize="2.5vw" fontWeight="md" textColor={green[50]}>
                 Programme sectoriel forêts et environnement du Cameroun
             </Typography>
-
-            {/* Liste des partenaires */}
-            {/* <Box sx={{ mt: 5 }}>
-                <Typography level="h4" fontSize="2vw" fontWeight="md" mb={2}>
-                    Nos différents Partenaires
-                </Typography>
-
-                <Marquee>
-
-                    <Stack direction="row" spacing={4} justifyContent="center" alignContent={'center'} flexWrap="wrap">
-                        {PARTENAIRE_IMAMGE.map((partenaire, index) => (
-                            <CardMedia
-                                component="img"
-                                src={partenaire}
-                                alt={`Partenaire ${index + 1}`}
-                                key={index}
-                                sx={{ width: '7vw', height: "auto", objectFit: 'contain' }}
-                            />
-                        ))}
-                    </Stack>
-                </Marquee>
-
-            </Box> */}
         </Stack>
     );
 };

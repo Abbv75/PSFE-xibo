@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/joy";
 import { SUIVI_INDICATEUR_T } from "../../types";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { blue, orange, grey } from "@mui/material/colors";
+import { blue, orange, grey, green } from "@mui/material/colors";
 
 const Component = ({ data }: { data: SUIVI_INDICATEUR_T }) => {
     const categories = data.donnees_annees.map(d => d.annee);
@@ -87,8 +87,8 @@ const Component = ({ data }: { data: SUIVI_INDICATEUR_T }) => {
             <Typography
                 level="h4"
                 fontSize="2vw"
-                textColor={grey[700]}
-                fontWeight={300}
+                textColor={green[50]}
+                fontWeight={700}
             >
                 {data.intitule}
             </Typography>

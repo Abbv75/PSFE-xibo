@@ -92,8 +92,8 @@ export default function SuiviPTBAConsolide() {
             <Typography
                 level="h4"
                 fontSize={"2vw"}
-                textColor={grey[700]}
-                fontWeight={300}
+                textColor={green[50]}
+                fontWeight={700}
             >
                 Suivi du PTBA Consolidé
             </Typography>
