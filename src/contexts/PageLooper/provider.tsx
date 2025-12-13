@@ -1,10 +1,9 @@
 import { Context } from './context';
 import contextType from './contextType';
 import PageLooper from '../../components/PageLooper';
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import INITIAL_PAGES from '../../constant/initialPages';
-import getAllValidation from '../../service/prixMarche/getAllValidation';
-import { PAGE_T, GET_ALL_VALIDATION_T, SUIVI_INDICATEUR_T, API_MOBILE_PPM_T, API_mobile_activite_T } from '../../types';
+import { PAGE_T, SUIVI_INDICATEUR_T, API_MOBILE_PPM_T, API_mobile_activite_T } from '../../types';
 import { getAllSuiviIndicateurs } from '../../service/suiviIndicateurs';
 import { getSuiviPTBAConsolide } from '../../service/suiviPTBAConsolide';
 import { SUIVI_PTBA_CONSOLIDE_T } from '../../service/suiviPTBAConsolide/get';
@@ -15,7 +14,6 @@ import { REALISATION_CUMULE_T } from '../../service/realisationCumule/get';
 import { getPtba_zibo } from '../../service/ptba_zibo';
 import { PTBA_ZIBO_T } from '../../service/ptba_zibo/get';
 import { getAPI_mobile_action, getAPI_mobile_activite, getAPI_mobile_ppm, getAPI_mobile_programme } from '../../service/be_repport_api';
-import getUniqueActivites from '../../helpers/activitePTBA/getUniqueActivites';
 
 export default () => {
     const [pages, setPages] = useState<PAGE_T[]>(INITIAL_PAGES);
@@ -30,10 +28,6 @@ export default () => {
     const [API_mobile_actionData, setAPI_mobile_actionData] = useState<API_mobile_activite_T[]>([])
     const [API_mobile_programmeData, setAPI_mobile_programmeData] = useState<API_mobile_activite_T[]>([])
 
-    const [apiData, setapiData] = useState<GET_ALL_VALIDATION_T[]>([]);
-
-    const [cacheMoyennes] = useState<{ [produit: string]: any }>({});
-
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(true);
     const [timeLeft, setTimeLeft] = useState(pages[0].duration / 1000);
@@ -42,7 +36,6 @@ export default () => {
     const nextPage = () => setCurrentIndex((prev) => (prev + 1) % pages.length);
 
     const loadData = () => {
-        getAllValidation().then(data => data && setapiData(data));
         getAllSuiviIndicateurs().then(res => res && setsuiviIndicateurData(res));
         getSuiviPTBAConsolide().then(res => res && setsuiviPTBAConsolide(res));
         getSuiviPTBAProgramme().then(res => res && setsuiviPTBAProgramme(res));
@@ -84,8 +77,6 @@ export default () => {
     const value: contextType = {
         pages,
         setPages,
-        apiData,
-        cacheMoyennes,
         currentIndex,
         setCurrentIndex,
         isPlaying,
