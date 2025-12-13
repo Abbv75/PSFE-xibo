@@ -1,4 +1,4 @@
-import { PTBA_ZIBO_T } from "../../service/ptba_zibo/get";
+import { ActivitePTBA, PTBA_ZIBO_T } from "../../service/ptba_zibo/get";
 import { REALISATION_CUMULE_T } from "../../service/realisationCumule/get";
 import { SUIVI_PTBA_CONSOLIDE_T } from "../../service/suiviPTBAConsolide/get";
 import { SUIVI_PTBA_PROGRAMME_T } from "../../service/suiviPTBAProgramme/get";
@@ -23,5 +23,5 @@ export default interface contextType {
     API_mobile_ppmData?: API_MOBILE_PPM_T,
     API_mobile_activiteData: API_mobile_activite_T[]
     API_mobile_actionData: API_mobile_activite_T[]
-    API_mobile_programmeData: API_mobile_activite_T[]
+    API_mobile_programmeData: API_mobile_activite_T[],
 }

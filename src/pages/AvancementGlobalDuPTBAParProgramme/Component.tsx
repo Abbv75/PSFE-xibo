@@ -25,15 +25,15 @@ const Component = ({ API_mobile_programmeData, nbrPage }: { API_mobile_programme
                             },
                             {
                                 key: 'etapes',
-                                label: 'Etapes'
+                                label: 'Avancement'
                             },
                             {
                                 key: 'pourcentage_decaissement',
-                                label: 'Pourcentage de décaissement'
+                                label: 'Décaissement (%)'
                             },
                             {
                                 key: 'pourcentage_engagement',
-                                label: 'Pourcentage d\'engagement'
+                                label: 'Engagement (%)'
                             },
                             {
                                 key: 'cout_prevu',
@@ -54,6 +54,9 @@ const Component = ({ API_mobile_programmeData, nbrPage }: { API_mobile_programme
                             cout_realise: d.cout_realise.toLocaleString(),
                             cout_engage: d.cout_engage.toLocaleString(),
                         }))}
+                        theadSx={{"& *":{
+                            fontSize : '1vw !important'
+                        }}}
                     />
                 </Grid>
             </Grid>

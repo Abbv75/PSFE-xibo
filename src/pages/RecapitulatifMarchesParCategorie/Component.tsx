@@ -1,17 +1,11 @@
-import { Stack, Typography, Grid } from '@mui/joy';
-import { transformPPMDataForVersion_T } from '../../types';
-import { grey } from '@mui/material/colors';
-import {
-    Chart as ChartJS, Tooltip,
-    Legend,
-    ArcElement,
-    Title
-} from "chart.js";
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { Doughnut } from 'react-chartjs-2';
-import TableCustom from '../../components/TableCustome';
-
-ChartJS.register(ArcElement, Tooltip, Legend, Title, ChartDataLabels);
+import { Stack, Typography, Grid } from "@mui/joy";
+import { transformPPMDataForVersion_T } from "../../types";
+import { grey } from "@mui/material/colors";
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import TableCustom from "../../components/TableCustome";
+import formatToXOF from "../../helpers/formatToXOF";
+import formatToPercent from "../../helpers/formatToPercent";
 
 const colors = [
     "#4e79a7",
@@ -26,7 +20,52 @@ const colors = [
     "#bab0ab",
 ];
 
-const Component = ({ data }: { data: transformPPMDataForVersion_T }) => {
+export default ({ data }: { data: transformPPMDataForVersion_T }) => {
+    const pieSeries = data.donutData.map((d, i) => ({
+        name: d.name,
+        y: d.value,
+        color: colors[i % colors.length],
+    }));
+
+    const pieOptions: Highcharts.Options = {
+        chart: {
+            type: "pie",
+            backgroundColor: "white",
+            height: "70%",
+            animation: false,
+        },
+        title: {
+            text: "Répartition du cout total par catégories",
+            style: { fontSize: "16px", fontWeight: "bold" },
+        },
+        tooltip: {
+            pointFormat: "<b>{point.percentage:.1f}%</b> ({point.y})",
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: "pointer",
+                dataLabels: {
+                    enabled: true,
+                    format: "{point.name}: {point.percentage:.1f}%",
+                    style: {
+                        color: "white",
+                        fontWeight: "bold",
+                        textOutline: "1px contrast",
+                    },
+                },
+            },
+        },
+        series: [
+            {
+                type: "pie",
+                name: "Répartition du coût",
+                data: pieSeries,
+            },
+        ],
+        credits: { enabled: false },
+    };
+
     return (
         <Stack sx={{ gap: 3, p: 3 }}>
             <Typography
@@ -38,92 +77,31 @@ const Component = ({ data }: { data: transformPPMDataForVersion_T }) => {
                 Version : {data.version.numero} ({data.version.annee})
             </Typography>
 
-            <Grid container>
+            <Grid container spacing={2}>
                 <Grid xs={12} md={8}>
                     <TableCustom
-                        data={data.tableauCategories.map(d => ({
+                        data={data.tableauCategories.map((d) => ({
                             ...d,
-                            cout_total_usd: d.cout_total_usd.toLocaleString('fr-FR', {
-                                style: 'currency',
-                                currency: 'USD',
-                            }),
-                            montant_realise: d.montant_realise.toLocaleString('fr-FR', {
-                                style: 'currency',
-                                currency: 'USD',
-                            }),
-                            taux_realisation: d.taux_realisation.toLocaleString('fr-FR', {
-                                style: 'percent',
-                                minimumFractionDigits: 2,
-                                maximumFractionDigits: 2,
-                            })
+                            cout_total_usd: formatToXOF(d.cout_total_usd),
+                            montant_realise: formatToXOF(d.montant_realise),
+                            taux_realisation: formatToPercent(d.taux_realisation),
                         }))}
                         columns={[
-                            {
-                                key: 'nom',
-                                label: 'Nom'
-                            },
-                            {
-                                key: 'nombre_marches',
-                                label: 'Nombre de marchés'
-                            },
-                            {
-                                key: 'cout_total_usd',
-                                label: 'Cout total (USD)'
-                            },
-                            {
-                                key: 'montant_realise',
-                                label: 'Montant de réalisation'
-                            },
-                            {
-                                key: 'taux_realisation',
-                                label: 'Taux de réalisation'
-                            },
+                            { key: "nom", label: "Nom" },
+                            { key: "nombre_marches", label: "Nombre de marchés" },
+                            { key: "cout_total_usd", label: "Cout total" },
+                            { key: "montant_realise", label: "Montant de réalisation" },
+                            { key: "taux_realisation", label: "Taux de réalisation" },
                         ]}
+                        tbodySx={{
+                            fontSize: '1.1vw !important'
+                        }}
                     />
-
                 </Grid>
                 <Grid xs={12} md={4}>
-                    <Doughnut
-                        data={{
-                            labels: data.donutData.map(d => d.name),
-                            datasets: [
-                                {
-                                    data: data.donutData.map(d => d.value),
-                                    backgroundColor: data.donutData.map((_, i) => colors[i % colors.length]),
-                                    borderWidth: 1,
-                                    label: "Pourcentage du cout sur le total",
-                                },
-                            ],
-                        }}
-                        options={{
-                            responsive: true,
-                            plugins: {
-                                legend: { display: true, },
-                                title: {
-                                    display: true,
-                                    text: "Répartition du cout total par catégories",
-                                    font: { size: 18, weight: "bold" },
-                                    padding: 20
-                                },
-                                datalabels: {
-                                    color: 'white',          // couleur du texte
-                                    formatter: (value, ctx) => {
-                                        const dataset = ctx.chart.data.datasets[0].data;
-                                        //@ts-ignore
-                                        const total = dataset.reduce((a: number, b: number) => a + b, 0);
-                                        //@ts-ignore
-                                        const percentage = ((value as number) / total) * 100;
-                                        return `${percentage.toFixed(1)}%`;  // formatage en pourcentage
-                                    },
-                                    font: { weight: 'bold', size: 14 },
-                                }
-                            },
-                        }}
-                    />
+                    <HighchartsReact highcharts={Highcharts} options={pieOptions} />
                 </Grid>
             </Grid>
         </Stack>
-    )
-}
-
-export default Component
+    );
+};
