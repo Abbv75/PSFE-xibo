@@ -6,6 +6,7 @@ import HighchartsReact from "highcharts-react-official";
 import TableCustom from "../../components/TableCustome";
 import formatToXOF from "../../helpers/formatToXOF";
 import formatToPercent from "../../helpers/formatToPercent";
+import LinearProgressCustom from "../../components/LinearProgressCustom";
 
 const colors = [
     "#4e79a7",
@@ -84,7 +85,7 @@ export default ({ data }: { data: transformPPMDataForVersion_T }) => {
                             ...d,
                             cout_total_usd: formatToXOF(d.cout_total_usd),
                             montant_realise: formatToXOF(d.montant_realise),
-                            taux_realisation: formatToPercent(d.taux_realisation),
+                            taux_realisation: LinearProgressCustom(d.taux_realisation),
                         }))}
                         columns={[
                             { key: "nom", label: "Nom" },

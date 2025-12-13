@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.1dde9b24.css",
-    "main.js": "/static/js/main.5bb4495f.js",
+    "main.js": "/static/js/main.082f5f58.js",
     "static/js/453.78a4f5ab.chunk.js": "/static/js/453.78a4f5ab.chunk.js",
     "static/media/foretImage.jpeg": "/static/media/foretImage.af734588c855f75cdb5a.jpeg",
     "static/media/logo.png": "/static/media/logo.d629e80938dbb69f57d4.png",
@@ -10,11 +10,11 @@
     "static/media/Flag_of_Cameroon.png": "/static/media/Flag_of_Cameroon.9d56ed061b82cabf468d.png",
     "index.html": "/index.html",
     "main.1dde9b24.css.map": "/static/css/main.1dde9b24.css.map",
-    "main.5bb4495f.js.map": "/static/js/main.5bb4495f.js.map",
+    "main.082f5f58.js.map": "/static/js/main.082f5f58.js.map",
     "453.78a4f5ab.chunk.js.map": "/static/js/453.78a4f5ab.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1dde9b24.css",
-    "static/js/main.5bb4495f.js"
+    "static/js/main.082f5f58.js"
   ]
 }

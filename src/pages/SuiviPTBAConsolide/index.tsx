@@ -3,6 +3,7 @@ import Highcharts, { Options } from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { Stack, Typography } from "@mui/joy";
 import { blue, green, orange, red, purple, grey } from "@mui/material/colors";
+import { useMemo } from "react";
 
 export default function SuiviPTBAConsolide() {
     const { suiviPTBAConsolide } = usePageLooper();
@@ -22,10 +23,11 @@ export default function SuiviPTBAConsolide() {
     ];
 
     // Construction des points avec une couleur par barre
-    const dataColoree = valeurs.map((val, i) => ({
+    const dataColoree = useMemo(() => valeurs.map((val, i) => ({
         y: val,
         color: palette[i % palette.length],
-    }));
+    })
+    ), [valeurs]);
 
     const options: Options = {
         chart: {
